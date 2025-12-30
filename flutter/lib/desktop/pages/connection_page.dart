@@ -85,35 +85,8 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
     //             _svcIsUsingPublicServer.value),
     //       ),
     //     );
-
-    // basicWidget() => Row(
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       children: [
-    //         Container(
-    //           height: 8,
-    //           width: 8,
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(4),
-    //             color: _svcStopped.value ||
-    //                     stateGlobal.svcStatus.value == SvcStatus.connecting
-    //                 ? kColorWarn
-    //                 : (stateGlobal.svcStatus.value == SvcStatus.ready
-    //                     ? Color.fromARGB(255, 50, 190, 166)
-    //                     : Color.fromARGB(255, 224, 79, 95)),
-    //           ),
-    //         ).marginSymmetric(horizontal: em),
-    //         Container(
-    //           width: isIncomingOnly ? 226 : null,
-    //           child: _buildConnStatusMsg(),
-    //         ),
-    //         // stop
-    //         if (!isIncomingOnly) startServiceWidget(),
-    //         // ready && public
-    //         // No need to show the guide if is custom client.
-    //         if (!isIncomingOnly) setupServerWidget(),
-    //       ],
-    //     ); 
-// #81-110行代码替换如下：
+    
+// #81-87行代码替换如下：
     Widget setupServerWidget() => Flexible(
        child: Offstage(
          offstage: !(!_svcStopped.value &&
@@ -125,6 +98,33 @@ class _OnlineStatusWidgetState extends State<OnlineStatusWidget> {
          ),
        ),
      );
+    basicWidget() => Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 8,
+              width: 8,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: _svcStopped.value ||
+                        stateGlobal.svcStatus.value == SvcStatus.connecting
+                    ? kColorWarn
+                    : (stateGlobal.svcStatus.value == SvcStatus.ready
+                        ? Color.fromARGB(255, 50, 190, 166)
+                        : Color.fromARGB(255, 224, 79, 95)),
+              ),
+            ).marginSymmetric(horizontal: em),
+            Container(
+              width: isIncomingOnly ? 226 : null,
+              child: _buildConnStatusMsg(),
+            ),
+            // stop
+            if (!isIncomingOnly) startServiceWidget(),
+            // ready && public
+            // No need to show the guide if is custom client.
+            if (!isIncomingOnly) setupServerWidget(),
+          ],
+        ); 
 
 
     return Container(
