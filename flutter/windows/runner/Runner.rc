@@ -97,6 +97,7 @@ BEGIN
             VALUE "OriginalFilename", "CJDesk.exe" "\0"
             VALUE "ProductName", "CJDesk" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
+			
         END
     END
     BLOCK "VarFileInfo"
